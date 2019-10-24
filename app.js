@@ -1,4 +1,5 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 var app = express();
 app.locals.pretty = true;
 
@@ -8,6 +9,16 @@ app.set('views','./views');
 
 //정적인 파일(public 폴더) 사용)
 app.use(express.static('public'));
+app.use(bodyParser.urlencoded({extended:false}))
+//폼
+app.get('/form', function(req, res){
+   res.render('form');
+});
+app.post('/form_receiver', function(req,res){
+   var title = req.body.title;
+   var description = req.body.description;
+   res.send(title+','+description);
+})
 //쿼리스트링
 app.get('/topic/:id',function(req,res){
    //res.send(req.query.id + ','+req.query.name);
