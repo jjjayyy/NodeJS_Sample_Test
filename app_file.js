@@ -51,7 +51,7 @@ app.post('/topic', function(req, res){
     var description = req.body.description;
     fs.writeFile('data/' + title, description, (err) => {
         if(err){
-            res.status(500).send('Internal Server Error');
+            res.status(500).send('Internal Server Errorrr');
         } 
         res.redirect('/topic/'+title);
     })
